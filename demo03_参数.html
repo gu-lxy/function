@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数的参数</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*
+	 * 练习1：定义一个函数，用于求1-10的和，并调用
+	 * 练习2：定义一个函数，用于求1-20的和，并调用
+	 * 练习3：定义一个函数，用于兵1-100的和，并调用
+	 */
+	/*
+	 * 函数的参数:
+	 * 		形式参数：定义函数的时候，可以接收调用处传来的数据
+	 * 		实际参数：调用函数的时候，给形参赋值
+	 * 
+	 * 如果函数中有的变量的数值，函数中无法决定，调用处来确定。就可以设计为参数。
+	 * 几个数值变量的数值不确定，就定义几个参数，多个参数之间逗号隔开。
+	 */
+		//1-?的和
+		function getSum(n){ //n就叫做参数：定义函数-->形参
+			var sum = 0;
+			for(var i =1;i <= n;i++){
+				sum += i;
+			}
+			console.log(sum);
+		}
+		//1-10的和
+		getSum(10); // 10就叫做实际参数
+		
+		
+		//1-20的和
+		getSum(20); //?--->20
+		
+		
+		//1-100的和
+		getSum(100);//?--->100
+		
+		
+		//定义一个函数，用于求2个数的和
+		function add(a,b){
+			console.log("a:"+a)
+			console.log("b:"+b)
+			var sum = a + b;
+			console.log(sum)
+		}
+		
+		add(1,2);
+		add(101,202)
+		
+		sub();//调用 ，sub is not defined
+	</script>
+</html>

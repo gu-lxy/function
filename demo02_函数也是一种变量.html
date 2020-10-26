@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>函数也是一种变量</title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+	/*
+	 * 函数也是一种变量，是一种数据类型：function
+	 * 可以作为函数的返回值，还可以作为另一个函数的参数。
+	 */
+	//定义函数：函数表达式的方式
+		var test1 = function (){
+			console.log("我是一个函数。。")
+		}
+		
+	//调用
+	test1();
+	
+	
+	var test2 = test1;//将test1赋值给test2，而test1是一个函数，所以test2也是一个函数
+	test2(); //执行test1函数
+	
+	console.log(typeof test2) //function
+	
+	function test3(){
+		console.log('我也是一个函数。。')
+	}
+	
+	var test4 = test3; //将test3赋值给test4
+	test4();//调用
+	
+	
+	
+	
+	</script>
+</html>

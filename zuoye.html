@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>作业</title>
+	</head>
+
+	<body>
+		<table border="0" cellspacing="" cellpadding="">
+			<tr>
+				<td>
+					请输入一个整数:
+				</td>
+				<td>
+					<input type="text" name="num1" id="num1" value="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					请在此输入一个整数：
+				</td>
+				<td>
+					<input type="text" name="num2" id="num2" value="" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					请选择操作：
+				</td>
+				<td>
+					<select id="oper">
+						<option value="+">+</option>
+						<option value="-">-</option>
+						<option value="*">*</option>
+						<option value="/">/</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button onclick="test1()">计算</button>
+				</td>
+			</tr>
+			
+		</table>
+		
+		
+
+	</body>
+	<script type="text/javascript">
+		//当点击计算按钮，执行此段代码
+		function test1(){
+			//1.先查找文档中的标签元素
+			var input1 = document.getElementById("num1");
+			var input2 = document.getElementById("num2");
+			var sel = document.getElementById("oper");
+			//2.通过标签元素获取value只,string
+			var num1 = parseInt(input1.value);//"100"
+			var num2 = parseInt(input2.value);//"5"
+			var oper = sel.value;
+			console.log(num1,num2,oper);
+			console.log(typeof num1)
+			console.log(typeof num2)
+			//3.进行计算
+			var res = 0;
+			switch(oper){
+				case "+":
+					res = num1 + num2;
+					break;
+				case "-":
+					res = num1 - num2;
+					break;
+				case "*":
+					res = num1 * num2;
+					break;
+				case "/":
+					res = num1 / num2;
+					break;
+			}
+			//4.结果
+			console.log(res)
+		}
+	
+	
+	
+	
+	
+		/*
+		 * 输出从1900年到2017年之间所有闰年
+		 * 
+		 */
+		var count = 0;//计数器
+		for(var i = 1900;i<=2017;i++){
+			if(i%4 == 0 && i % 100 !=0 || i%400 == 0){
+				console.log(i);
+				count++;//计数器加1
+			}
+		}
+		console.log("-->数量："+count)
+		//2.求1-3+5-7+ ?? -99+101的值。
+		//1+5+9+13...+101 - 3- 7-11...-99
+		var sum = 0;
+		for(var i = 1;i <= 101;i+=4){//1,5,9,13....101
+			sum += i;
+		}
+		for(var i = 3;i<=99;i+=4){
+			sum -= i;
+		}
+		console.log(sum);
+		
+		sum = 0;
+		count = 0;
+		for(var i=1;i<=101;i+=2){
+			/*
+			 * i=1,count:1 +
+			 * i=3,count:2 -
+			 * i=5,count:3 +
+			 * i=7,count:4 -
+			 * ...
+			 */
+			count++;
+			if(count % 2 != 0){
+				sum += i;
+			}else{
+				sum -= i;
+			}
+			
+		}
+		console.log(sum);
+		
+		sum = 0;
+		var flag = true;// flag:true-->+,flag:false-->-
+		for(var i = 1;i <= 101;i+=2){
+			if(flag){//== true
+				sum += i;//+=1 + 5
+			}else{
+				//false
+				sum -=i; // -3 - 7
+			}
+			flag = !flag; // false true false
+		}
+		/*
+		 * 3.打印出2-100之间的素数(素数，就是只能被1或本身整除的数)
+			素数也叫质数，只能被1和本身整除的数。
+			i: 7
+				2,3,4,5,6
+			i:8
+				2,3,4,5,6,7
+			
+			2，3，5，7，11，13，17，19，23，29，31.。。。
+		 */
+		
+		for(var i = 2;i <= 100;i++){
+				
+	//		count = 0;
+			flag = true;
+			for(var j = 2;j <= Math.sqrt(i);j++){ // 2-6
+				if( i % j == 0){//被整除了
+	//				count++;//计数器
+					flag = false;
+					break;
+				}
+			}
+	//		console.log(count) // 0,1
+	//		if(count == 0){
+	//			console.log(i+"是素数")	
+	//		}else{
+	//			console.log('不是素数')
+	//		}
+			if(flag){
+				console.log(i+",是素数")
+			}
+//			else{
+//				console.log('不是素数')
+//			}
+		}
+		
+		for(var i =2;i<=100;i++){
+			var j = 2;
+			while( i % j != 0){ //素数只能被1和本身整除
+				j++;//
+			}
+			if(i == j){
+				console.log(i+",是素数")
+			}
+		}
+		
+		
+		console.log(Math.sqrt(9));//根号9
+		console.log(Math.sqrt(4));
+		console.log(Math.sqrt(8));// 2 * 1.414
+		console.log(Math.pow(3,2)) // a的b次方
+		console.log(Math.pow(2,3)) // a的b次方
+			
+	
+	/*
+	 * 4.百元买百鸡：
+	100元钱，买100只鸡。
+	公鸡5元一只。0-20
+	母鸡3元一只。0-33
+	小鸡一元钱3只。
+	 */
+		
+	for(var a = 0;a<= 20;a++){ //公鸡的数量
+		for(var b = 0;b<=33;b++){ //母鸡的数量
+			var c = 100- a- b;
+			if(a * 5 + b * 3 + c / 3  == 100 && c % 3 == 0){
+				console.log("公鸡："+a+"，母鸡："+b+",小鸡："+c)
+			}
+		}
+	}
+	
+	
+	//5.一张纸的厚度大约是0.08mm，对折多少次之后能达到珠穆朗玛峰的高度（8848.13m）
+	//1米=100厘米，1厘米=10毫米
+	
+	var n = 0.08;//mm
+	count = 0;//计数器
+	while(n <= 8848130){
+		n *= 2;
+		count++;
+	}
+	 console.log(count);
+		
+	count =0;
+	for(var i = 0.08;i<=8848130;i*=2){
+		count++;
+	}
+	console.log(count);
+	
+	/*
+	 * 6.求水仙花数：所有的三位数中，找
+	这个三位数的每位上的数字的立方和，刚好是这个数字本身，就是水仙花数。
+		100-999
+			i :278
+				2,7,8
+	 */
+		
+	for(var i = 100;i<1000;i++){
+		var a = parseInt(i / 100);//百位
+		var b = parseInt(i / 10) % 10;//十位
+		var c = i % 10;//个位
+		if(Math.pow(a,3) +Math.pow(b,3) +Math.pow(c,3) == i){
+			console.log(i);
+		}
+		
+	}
+	for(var a = 1;a < 10;a++){
+		for(var b = 0;b < 10;b++){
+			for(var c = 0;c < 10;c++){
+				var n = a * 100 + b * 10 + c * 1;
+				if(Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3) == n){
+					console.log(n);
+				}
+				
+			}
+		}
+	}
+	
+	/*
+	 * 7,打印菱形
+	 * 
+	 */
+	//上三角
+	//第一行
+	//A：循环4次，打印空格
+	//B：打印*
+	//C：换行
+	
+	//第二行
+	//A：循环打印空格，3次
+	//B：循环打印*，3次
+	//C：换行
+	
+	//
+	
+	document.write("<table border='1'>")
+	for(var i = 1;i<=5;i++){//控制行数
+		document.write("<tr >")
+		/*
+		 * i=1,第一行,j:0,1,2,3 	j<4
+		 * i=2,第二行，j:0,1,2	j<3
+		 * i=3,第三行，j:0,1		j<2
+		 */
+		//每一行的打印
+		//A：循环打印空格
+		for(var j = 0;j <5-i;j++){//j:0,1,2,3
+			document.write("<td >")
+			document.write("&nbsp;")
+			document.write("</td>")
+		}
+		
+		//B：循环打印*
+		/*
+		 * i=1, k:0,			k<1		*
+		 * i=2, k:0,1,2			k<3		***
+		 * i=3, k:0,1,2,3,4		k<5		*****
+		 * i=4, k:0,1,2,3,4,5,6	k<7		*******
+		 */
+		for(var k = 0;k<2*i-1;k++){
+			document.write("<td bgcolor='yellow'>")
+			document.write("*")
+			document.write("</td>")
+		}
+		for(var j = 0;j <5-i;j++){//j:0,1,2,3
+			document.write("<td>")
+			document.write("&nbsp;")
+			document.write("</td>")
+		}
+		
+		//C：换行
+//		document.write('<br />')
+		document.write("</tr>")
+	}
+	//下三角
+	for(var i = 1;i < 5;i++){
+		document.write("<tr>")
+		/*
+		 * i=1,		j:0,	j<1
+		 * i=2,		j:0,1	j<2
+		 * i=3,		j:0,1,2	j<3
+		 */
+		//A：空格
+		for(var j=0;j<i;j++){
+			document.write("<td>")
+			document.write("&nbsp;")
+			document.write("</td>")
+		}
+		//B：*
+		/*
+		 * i=1,	k:0,1,2,3,4,5,6		k<7
+		 * i=2, k:0,1,2,3,4			k<5
+		 * i=3,	k:0,1,2				k<3
+		 * i=4,	k:0,				k<1
+		 */
+		for(var k=0;k<9-2*i;k++){
+			document.write("<td bgcolor='yellow'>")
+			document.write("*");
+			document.write("</td>")
+		}
+		//A：空格
+		for(var j=0;j<i;j++){
+			document.write("<td>")
+			document.write("&nbsp;")
+			document.write("</td>")
+		}
+		//C：换行
+//		document.write("<br />")
+		document.write("</tr>")
+	}
+	document.write("</table>")
+	
+	//多层循环嵌套：break，continue
+	out1:for(var i=1;i<5;i++){//给循环贴标签：标签名:
+		in1:for(var j=1;j<5;j++){
+			if(j == 2){
+				break out1;//结束指定的循环
+//				break;//默认结束里层循环
+//				continue; //默认结束里层煦暖
+			}
+			console.log(i,j)
+		}
+	}
+	
+	</script>
+
+</html>
